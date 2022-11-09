@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function iPhone() {
-  return (
-    <div>iPhone</div>
-  )
+  return <div>iPhone</div>;
 }

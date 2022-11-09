@@ -1,19 +1,23 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import CartWidget from './CartWidget';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
 
-const pages = ['iPad', 'iPhone', 'Watch'];
-
+const pages = [
+  // { label: "Home", link: "/" },
+  { label: "iPad", link: "/category/iPad" },
+  { label: "iPhone", link: "/category/iPhone" },
+  { label: "Watch", link: "/category/Watch" },
+];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -27,15 +31,21 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "#3a3a3a" }}> 
+    <AppBar position="static" sx={{ bgcolor: "#3a3a3a" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-
-        <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
-            <img class="logo-iStore" src="./logo-iStore.png" alt="logo-istore" onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}/>
-              </Button>
-            {/* Tipografia y estilos lista Navbar */}
+          <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }}>
+            <Link style={{ textDecoration: "none" }} to={"/"}>
+              <img
+                class="logo-iStore"
+                src="../logo-iStore.png"
+                alt="logo-istore"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              />
+            </Link>
+          </Button>
+          {/* Tipografia y estilos lista Navbar */}
           <Typography
             variant="h6"
             noWrap
@@ -43,17 +53,16 @@ function Navbar() {
             href="/"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
-          >
-          </Typography>
+          ></Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             {/* Menu hamburguesa */}
             <IconButton
               size="large"
@@ -70,26 +79,24 @@ function Navbar() {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link to= {`/${page}`}>
-                        {page}
-                    </Link>
+                    <Link to={page.link}>{page.label}</Link>
                   </Typography>
                 </MenuItem>
               ))}
@@ -102,38 +109,29 @@ function Navbar() {
             href=""
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
-          >
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          ></Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                <Link style={{textDecoration: "none", color: "white"}} to= {`/${page}`}>
-                    {page}
+              <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }}>
+                <Link style={{ textDecoration: "none", color: "white" }} to={page.link}>
+                  {page.label}
                 </Link>
               </Button>
             ))}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-
-          <Button
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-            <CartWidget onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}/>
-              </Button>
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }}>
+              <CartWidget onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }} />
+              <Typography sx={{ my: 2, color: "white", display: "inline" }}> 0 </Typography>
+            </Button>
           </Box>
         </Toolbar>
       </Container>

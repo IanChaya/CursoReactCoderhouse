@@ -1,9 +1,6 @@
-import React from 'react'
+import React from "react";
+import ItemList from "./ItemList";
 
-export default function ItemListContainer({greeting}) {
-  return (
-    <div>
-        <h1>{greeting}</h1>
-    </div>
-  )
+export default function ItemListContainer() {
+  return <ItemList />;
 }
