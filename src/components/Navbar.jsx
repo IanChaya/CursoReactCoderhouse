@@ -13,7 +13,6 @@ import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
 
 const pages = [
-  // { label: "Home", link: "/" },
   { label: "iPad", link: "/category/iPad" },
   { label: "iPhone", link: "/category/iPhone" },
   { label: "Watch", link: "/category/Watch" },
@@ -128,10 +127,12 @@ function Navbar() {
             ))}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }}>
-              <CartWidget onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }} />
-              <Typography sx={{ my: 2, color: "white", display: "inline" }}> 0 </Typography>
-            </Button>
+            <Link to="/cart">
+              <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }}>
+                <CartWidget onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }} />
+                <Typography sx={{ my: 2, color: "white", display: "inline" }}> </Typography>
+              </Button>
+            </Link>
           </Box>
         </Toolbar>
       </Container>

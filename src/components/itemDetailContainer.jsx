@@ -1,29 +1,26 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { productosHC } from "../data/data";
+
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 import ItemDetail from "./ItemDetail";
 
-export default function ItemListContainer({ greeting }) {
+export default function ItemDetailContainer() {
+  const [product, setProduct] = useState({});
   const { iditem } = useParams();
 
-  const [producto, setProducto] = useState({});
-
   useEffect(() => {
-    const productoPromise = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(productosHC.find((item) => item.id == iditem));
-      }, 2000);
-    });
+    const db = getFirestore();
+    const refDoc = doc(db, "products", iditem);
 
-    productoPromise.then((res) => {
-      setProducto(res);
+    getDoc(refDoc).then((item) => {
+      const aux = { ...item.data(), id: item.id };
+
+      console.log(aux);
+
+      setProduct(aux);
     });
   }, [iditem]);
 
-  return (
-    <div sx={{ alignContent: "center" }}>
-      <ItemDetail producto={producto} />
-    </div>
-  );
+  return <ItemDetail product={product} />;
 }

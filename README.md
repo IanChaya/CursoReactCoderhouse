@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# iStore -  Tienda de productos marca Apple
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Proyecto Final React JS - CoderHouse - iStore, Tienda de productos electronicos marca Apple, creada por Ian Chaya.
 
-## Available Scripts
+Aplicación Web Ecommerce desarrollada con React JS, Material UI, Toastify y Firebase.
 
-In the project directory, you can run:
+DEPLOY: https://proyecto-final-react-ianchaya.web.app/
 
-### `npm start`
+# Descripcion de la app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+En esta app se desarrolla un e-commerce. El usuario puede navegar por la pagina de Inicio (ruta principal), en donde se muestran todos los productos disponibles así como tambien, desde las categorias, donde se filtraran los productos dependiendo el producto que se este buscando (Apple Watch, iPad o iPhone).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Al hacer click sobre un producto se muestra en detalle mas informacion del mismo y el usuario puede agregar al carrito la cantidad que quiera mientras no se supere el stock disponible. Una vez agregado el producto, se puede seguir navegando la web para agregar mas productos, o bien finalizar la compra para ver que hay dentro del carrito (Al almacenar el carrito en LocalStorage, si se actualiza la pagina no se pierden los productos ya seleccionados). 
 
-### `npm test`
+Si se finaliza la compra, se accede al carrito, el cual muestra un resumen de los productos seleccionados, las cantidades y el total de la compra. En este punto uno tiene la opcion de eliminar por producto en el caso de arrepentirse o bien continuar con la compra. 
+Si decide continuar con la misma, se accede a la pagina de checkout en donde se muestra un formulario en el cual el usuario debe ingresar nombre, email y telefono y un breve resumen de la compra con el total.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ Una vez completado y validado el formulario y, por lo tanto, confirmada la compra, se  le muestra al usuario el numero de orden de compra(generado con Firestore) y se puede volver al inicio nuevamante. Tanto los productos como las ordenes quedan almacenadas en la base de datos de Firestore.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Librerias utilizadas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Material UI para el uso general, cards, spinners, buttons, iconos.
+Importacion de css de bootstrap en App.js para estilos. 
+Toastify para las alertas.
